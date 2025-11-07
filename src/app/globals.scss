@@ -1,0 +1,23 @@
+// src/app/globals.scss
+
+.navbar {
+  background-color: beige;
+  padding: 10px 20px;
+
+  ul {
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin-right: 15px;
+
+      a {
+        color: blue;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}
