@@ -1,0 +1,18 @@
+// src/components/atoms/Label.tsx
+
+export default function Label({
+  htmlFor,
+  children,
+}: {
+  htmlFor: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="block text-sm font-medium text-gray-900"
+    >
+      {children}
+    </label>
+  );
+}
