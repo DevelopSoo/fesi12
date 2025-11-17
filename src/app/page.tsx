@@ -1,60 +1,44 @@
+// Next.js 프론트엔드 코드
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useState } from "react";
 
-export const TypingEffect = ({
-  text,
-  typingSpeed = 150,
-}: {
-  text: string;
-  typingSpeed?: number;
-}) => {
-  // 현재 입력된 텍스트
-  const [displayText, setDisplayText] = useState("");
-  // 현재 입력된 텍스트의 인덱스
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function Home() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    // text: "오늘은 러닝 어떤가요?"
-    // 입력하고 있는 위치(인덱스)가 text보다 커지기 전까지 반복
-    // 오: 0
-    // 늘: 1
-    // 은: 2
-    //   :3
-    // 러: 4
-    //...: 11
-    let timer: NodeJS.Timeout | undefined;
-    if (currentIndex < text.length) {
-      timer = setTimeout(() => {
-        // displayText: "" -> "오" -> "오늘" -> "오늘은" ...
-        setDisplayText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      }, typingSpeed);
-    }
-
-    return () => clearTimeout(timer);
-  }, [currentIndex, text, typingSpeed]);
+  const handleLogin = async () => {
+    const response = await fetch("http://localhost:4000/api/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
 
   return (
-    <div className="font-mono text-2xl">
-      {/* 현재 입력된 텍스트 */}
-      {displayText}
-      {/* 깜빡거리는 타이핑 커서 */}
-      <motion.span
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ repeat: Infinity, duration: 0.8 }}
-        className="ml-1 inline-block h-5 w-2 bg-black"
+    <div>
+      <h1>로그인 페이지</h1>
+      <input
+        type="text"
+        placeholder="아이디"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
-    </div>
-  );
-};
-
-// 사용 예시
-export default function TypingEffectExample() {
-  return (
-    <div className="p-8">
-      <TypingEffect text="오늘은 러닝 어떤가요?" typingSpeed={100} />
+      <input
+        type="password"
+        placeholder="비밀번호"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>로그인</button>
+      <a className="text-blue-500 underline" href="http://localhost:5173">
+        링크 유도
+      </a>
     </div>
   );
 }
