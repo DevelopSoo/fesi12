@@ -1,16 +1,24 @@
+// src/components/ThemeToggle/index.tsx
+
 "use client";
 
-import { useTheme } from "@/providers/ThemeProvider";
+import { useTheme } from "@/contexts/ThemeContext";
 
-export function ThemeToggle() {
-  const { toggleDarkMode } = useTheme();
+export const ThemeToggle = () => {
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <button
-      className="rounded-md border border-gray-300 p-2 dark:text-white"
-      onClick={toggleDarkMode}
-    >
-      다크모드 버튼
-    </button>
+    <div className="p-4">
+      <button
+        onClick={toggleTheme}
+        className={`${
+          theme === "light"
+            ? "rounded-md bg-gray-200 px-4 py-2 text-black hover:bg-gray-300"
+            : "rounded-md bg-gray-800 px-4 py-2 text-white hover:bg-gray-900"
+        }`}
+      >
+        {theme === "light" ? "다크 모드로 전환" : "라이트 모드로 전환"}
+      </button>
+    </div>
   );
-}
+};
