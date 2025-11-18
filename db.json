@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "body": "json-server is a simple way to create a REST API with JSON data."
+    },
+    {
+      "id": 2,
+      "title": "react-query",
+      "body": "react-query is a powerful data-fetching library for React applications."
+    },
+    {
+      "id": 3,
+      "title": "next.js",
+      "body": "Next.js is a React framework that enables server-side rendering and static site generation."
+    },
+    {
+      "title": "context",
+      "body": "니가 참 싫어 ",
+      "id": 4
+    },
+    {
+      "title": "휴식",
+      "body": "젭라..... 그만....해~! 강의 그만해~",
+      "id": 5
+    },
+    {
+      "title": "고마해라",
+      "body": "마이 묵었다",
+      "id": 6
+    }
+  ]
+}
