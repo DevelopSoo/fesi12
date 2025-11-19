@@ -1,7 +1,13 @@
 name: Github Actions로 테스트 자동화하기
 
 # 언제 실행할거야?
-on: push
+# 어디로 합칠꺼야? -> main, dev
+on:
+  pull_request:
+    branches:
+      - main
+    # opened: PR이 생성될 때
+    types: [opened, synchronize]
 
 # 어떤 직업
 jobs:
