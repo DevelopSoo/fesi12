@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - main
+    # opened: PR이 생성될 때
+    types: [opened]
 
 # 어떤 직업
 jobs:
