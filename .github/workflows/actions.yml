@@ -1,7 +1,7 @@
 name: Github Actions로 테스트 자동화하기
 
 # 언제 실행할거야?
-on: workflow_dispatch
+on: push
 
 # 어떤 직업
 jobs:
@@ -15,6 +15,7 @@ jobs:
 
   second_job:
     runs-on: ubuntu-latest
+    needs: first_job
     steps:
       - name: 두 번째 작업의 1단계
         run: echo "두 번째 작업의 1단계입니다."
