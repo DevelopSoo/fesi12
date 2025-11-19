@@ -1,30 +1,26 @@
-# 이름 짓기
-name: Github Actions 연습하기
-# 언제 이 작업을 수행할지 지정
-# github에 git push할 때 수행하겠다.
+name: Github Actions로 테스트 자동화하기
+
+# 언제 실행할거야?
 on: push
 
-# 직업 정하기
+# 어떤 직업
 jobs:
-  push-job:
-    # 어디서 일할거야? -> 어떤 OS에서 실행할꺼야?
+  test:
+    # 어떤 환경에서 실행할거야?
     runs-on: ubuntu-latest
-    # 구체적인 해야할 일
     steps:
-      - name: 첫 번째 작업
-        run: echo "첫 번째 작업 실행 중"
+      - name: Github Repository 불러오기
+        uses: actions/checkout@v5
 
-      - name: 여러 문장을 작성하기
-        run: |
-          echo "첫 번째 문장"
-          echo "두 번째 문장"
+      - name: Node.js 설치하기
+        uses: actions/setup-node@v6
+        # actions 사용할 때 옵션 -> with
+        with:
+          node-version: "24"
 
-      - name: Github Actions에 내장 변수를 사용하기
-        run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
+      - name: 의존성(라이브러리) 설치
+        # package-lock.json이 있어야만 설치가 되게 만든다.
+        run: npm ci
 
-      - name: GITHUB Actions의 Secret 변수 사용하기
-        run: |
-          echo ${{ secrets.MY_NAME }}
-          echo ${{ secrets.MY_HOBBY }}
+      - name: 테스트 실행하기
+        run: npm run test
