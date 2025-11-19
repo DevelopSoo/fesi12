@@ -7,7 +7,7 @@ on:
     branches:
       - main
     # opened: PR이 생성될 때
-    types: [opened]
+    types: [opened, synchronize]
 
 # 어떤 직업
 jobs:
