@@ -1,15 +1,18 @@
-# .github/workflows/actions.yml
-
-name: output 연습
-on: push
+name: if 조건 연습
+on:
+  push:
+    branches:
+      - develop
+      - main
 
 jobs:
-  create-output:
+  if-test:
     runs-on: ubuntu-latest
     steps:
-      - name: output 저장
-        id: save-output
-        run: echo "message=안녕" >> $GITHUB_OUTPUT
+      - name: develop 브랜치일 때만 실행
+        if: github.ref == 'refs/heads/develop'
+        run: echo "develop 브랜치에 푸시되었고, Staging 환경에 배포합니다."
 
-      - name: output 사용
-        run: echo "저장된 키는 ${{ steps.save-output.outputs.message}} 입니다"
+      - name: main 브랜치일 때만 실행
+        if: github.ref == 'refs/heads/main'
+        run: echo "main 브랜치에 푸시되었고, Production 환경에 배포합니다."
