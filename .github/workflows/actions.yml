@@ -1,7 +1,10 @@
 name: Github Actions로 테스트 자동화하기
 
 # 언제 실행할거야?
-on: push
+on:
+  push:
+    branches:
+      - main
 
 # 어떤 직업
 jobs:
