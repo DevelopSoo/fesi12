@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Button
-        label="스토리북 버튼"
+        label="스토리북 버"
         primary
         backgroundColor="red"
         size="large"
