@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Card 컴포넌트 스냅샷 1`] = `
+<div>
+  <div
+    class="rounded-lg bg-white p-4 shadow-md"
+  >
+    <h2
+      class="text-lg font-bold"
+    >
+      테스트 카드
+    </h2>
+    <p
+      class="text-sm text-gray-600"
+    >
+      이것은 테스트용 카드 컴포넌트입니다.
+    </p>
+    <img
+      alt="테스트 카드"
+      class="h-40 w-full object-cover"
+      src="https://via.placeholder.com/150"
+    />
+  </div>
+</div>
+`;
