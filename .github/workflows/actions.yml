@@ -1,0 +1,15 @@
+# 이름 짓기
+name: Github Actions 연습하기
+# 언제 이 작업을 수행할지 지정
+# github에 git push할 때 수행하겠다.
+on: push
+
+# 직업 정하기
+jobs:
+  push-job:
+    # 어디서 일할거야? -> 어떤 OS에서 실행할꺼야?
+    runs-on: ubuntu-latest
+    # 구체적인 해야할 일
+    steps:
+      - name: 첫 번째 작업
+        run: echo "첫 번째 작업 실행 중"
