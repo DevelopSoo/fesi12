@@ -13,3 +13,13 @@ jobs:
     steps:
       - name: 첫 번째 작업
         run: echo "첫 번째 작업 실행 중"
+
+      - name: 여러 문장을 작성하기
+        run: |
+          echo "첫 번째 문장"
+          echo "두 번째 문장"
+
+      - name: Github Actions에 내장 변수를 사용하기
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
