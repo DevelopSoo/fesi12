@@ -2,6 +2,10 @@
 
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
+import { initMocks } from "@/mocks";
+import { MSWComponent } from "@/providers/MSWComponent";
+
+initMocks();
 
 export default function RootLayout({
   children,
@@ -11,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <QueryProvider>{children}</QueryProvider>
+        <MSWComponent>
+          <QueryProvider>{children}</QueryProvider>
+        </MSWComponent>
       </body>
     </html>
   );
