@@ -1,7 +1,11 @@
 name: Github Actions로 테스트 자동화하기
 
 # 언제 실행할거야?
-on: pull_request
+# 어디로 합칠꺼야? -> main, dev
+on:
+  pull_request:
+    branches:
+      - main
 
 # 어떤 직업
 jobs:
