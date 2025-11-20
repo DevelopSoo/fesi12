@@ -1,0 +1,42 @@
+# preview 용 -> main 브랜치가 아닐 때
+name: Preview 배포
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Github 레포지토리 불러오기
+        uses: actions/checkout@v5
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 의존성 라이브러리 설치
+        run: npm ci
+
+      - name: 테스트 실행하기
+        run: npm run test
+
+      - name: Vercel CLI 설치
+        run: npm install --global vercel@latest
+
+      - name: Vercel 환경 정보 가져오기
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Vercel에서 빌드한다.
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Vercel에 배포하기
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
