@@ -1,5 +1,5 @@
 'use client';
 
 export default function Home() {
-  return <h1>메인 페이지2</h1>;
+  return <h1>{process.env.NEXT_PUBLIC_API_URL}</h1>;
 }
